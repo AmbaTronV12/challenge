@@ -795,18 +795,42 @@
     font-family: var(--font-family);
 }
 
-.mapContainer {
-  padding: 2rem;
-  background-color: #f9f9f9;
+.mapContainer{
+    display: flex;
+    flex-direction: column;
+    padding-block: 2rem;
+
+}
+.map {
   text-align: center;
-  margin-top: 4rem;
+  color: black;
 }
 
 .footer{
     display: flex;
     flex-direction: row;
+    border: 1px solid black;
+    align-items: center;
+    width: 100%;
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    justify-content: space-around;
 }
 
+.contact{
+    display: flex;
+    flex-direction: column;
+}
+
+.contactimg{
+    display: flex;
+    gap: 10px;
+}
+
+.contactimg img{
+        max-width: 50px;
+
+}
 
 
 

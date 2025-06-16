@@ -21,3 +21,5 @@ export {default as about3} from './about3.png';
 export {default as about4} from './about4.png';
 export {default as review1} from './review1.png';
 export {default as review2} from './review2.png';
+export {default as email} from './email.svg';
+export {default as phone} from './phone.svg';

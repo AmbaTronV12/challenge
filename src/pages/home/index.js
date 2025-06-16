@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import styles from './home.module.css'
 import { header, sidebarLogo, logo, logo2, trainer, trainer1, trainer2, trainer3, 
-  timetable, dummbell, hormone, card1, card2, card3, personal, open, pilates, about1, about2, about3, about4,review1, review2 
+  timetable, dummbell, hormone, card1, card2, card3, personal, open, pilates, about1, about2, about3, about4, review1, review2, email, phone
 } from '../../asset/index';
 import GoogleMapComponent from '../googlemap/index';
 import { LoadScript, GoogleMap, Marker } from '@react-google-maps/api';
@@ -477,27 +477,30 @@ function Home() {
 
                       <img src={logo2}/>
 
-                            <div className={styles.mapContainer}>
-                              <h2>Find Us On Google Maps</h2>
-                              <LoadScript googleMapsApiKey="YOUR_GOOGLE_MAPS_API_KEY">
+                      <div className={styles.mapContainer}>
+
+                              <h2>FIND US HERE</h2>
+                            <div className={styles.map}>
+                              <LoadScript googleMapsApiKey="AIzaSyDUOG9Cc8HnZ8Py-DC8sPrIfapn5dWb2QE">
                                 <GoogleMap
-                                  mapContainerStyle={{ width: '100%', height: '400px' }}
+                                  mapContainerStyle={{ width: '300px', height: '200px' }}
                                   zoom={15}
                                   center={{
-                                    lat: -6.2088,
-                                    lng: 106.8457
+                                    lat: -8.638139543446549,
+                                    lng: 115.20803788005871
                                   }}
-                                >
+                                  >
                                   <Marker
                                     position={{
                                       lat: -6.2088,
                                       lng: 106.8457
                                     }}
                                     title="Zenetics Gym"
-                                  />
+                                    />
                                 </GoogleMap>
                               </LoadScript>
                             </div>
+                       </div>
 
                         <div className={styles.open}>
                           <h3>OPENING HOURS</h3>
@@ -508,6 +511,12 @@ function Home() {
 
                         </div>
                         <div className={styles.contact}>
+                            <h3>CONTACT US</h3>
+                        <div className={styles.contactimg}>
+
+                          <img src={email}></img>
+                          <img src={phone}></img>
+                        </div>
                           
                           </div>
 
