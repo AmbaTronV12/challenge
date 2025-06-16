@@ -1,0 +1,1073 @@
+/* home.module.css */
+
+.page {
+    /* flex for centering content */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+}
+
+/* --- Sticky Navbar --- */
+.stickyNavbar {
+    position: fixed;
+    top: -100px; /* Start hidden above the viewport */
+    left: 0;
+    width: 100%;
+    background-color: black; /* White background for sticky nav */
+    color: var(--secondary-color); /* Darker text for sticky nav */
+    display: flex;
+    justify-content: center; /* Center the links */
+    align-items: center;
+    padding: 15px 20px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1); /* Softer shadow */
+    z-index: 1000; /* Ensure it's on top */
+    transition: top 0.3s ease-in-out, opacity 0.3s ease-in-out;
+    opacity: 0; /* Start fully transparent */
+    border-bottom-left-radius: 8px; /* Rounded corners */
+    border-bottom-right-radius: 8px;
+}
+
+.stickyNavbar.visible {
+    top: 0; /* Slide down to be visible */
+    opacity: 1; /* Fade in */
+}
+
+.stickyLogo {
+    height: 50px; /* Adjust as needed */
+    margin-right: 20px;
+}
+
+.stickyNavbar .navLink {
+    text-decoration: none;
+    padding: 8px 15px;
+    margin: 0 10px;
+    font-family: var(--font-family);
+    transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+    border-radius: 6px; /* Rounded links */
+    font-weight: 500; /* Slightly bolder */
+}
+
+.stickyNavbar .navLink:hover {
+    color: var(--tertiary-color); /* Example accent color on hover */
+}
+
+/* --- Header --- */
+.header {
+    width: 100%;
+    min-height: 580px; /* Example height for the header */
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between; /* Align items to the top */
+    position: relative; /* Crucial for positioning the ::before pseudo-element */
+    z-index: 1; /* Ensure header content is above the pseudo-element */
+    overflow: hidden; /* Important for containing the absolute pseudo-element */
+    font-family: var(--font-family);
+}
+
+/* Pseudo-element for the blurred background */
+.header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: var(--header-bg-image); /* Use CSS variable to get image from JS */
+    background-size: cover;
+    background-position: center;
+    filter: blur(3px); /* Apply blur only to this pseudo-element */
+    z-index: -1; /* Place it behind the actual header content */
+    transform: scale(1.05); /* Slightly enlarge to cover blur edges */
+}
+
+.logo{
+    margin-top: 7px;
+    align-self: flex-start;
+    margin-left: 38px;
+}
+
+/* --- Navbar within Header --- */
+.navbar {
+    display: flex;
+    justify-content: flex-end; /* Align to the right for the menu icon */
+    align-items: center;
+    margin: 12px 15px;
+    align-self: flex-start;
+}
+
+.navLinks {
+    display: flex;
+    align-items: center;
+    gap: 40px; /* Space between links */
+    padding: 27px 37px;
+    padding-left: 52px;
+    background-color: black;
+}
+
+.navLink {
+    color: var(--secondary-color);
+    font-size: 16px;
+    text-decoration: none;
+    transition: color 0.2s ease-in-out;
+    border-radius: 6px;
+}
+
+.navLink:hover {
+    color: var(--tertiary-color); /* Example hover color */
+    text-shadow: 0 0 5px rgba(255,215,0,0.5); /* Subtle shadow on hover */
+}
+
+.header .stickyLogo { /* Styles for the main logo in the header */
+    position: absolute; /* Position it relative to the header */
+    top: 20px; /* Adjust top position */
+    left: 20px; /* Adjust left position */
+    height: 80px; /* Larger logo in the main header */
+    z-index: 10; /* Ensure it's above other elements if needed */
+    border-radius: 12px; /* Rounded corners for the main logo */
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2); /* Shadow for main logo */
+}
+
+/* --- Sidebar Toggle Icon --- */
+.sidebarToggle {
+    cursor: pointer;
+    height: 40px; /* Example size */
+    transition: transform 0.2s ease-in-out;
+    margin-left: 20px; /* Space from other nav links */
+    border-radius: 8px; /* Rounded corners for the toggle icon */
+}
+.sidebarToggle:hover {
+    transform: scale(1.1);
+}
+
+/* Sidebar main container (hidden by default) */
+.sidebar {
+    position: fixed;
+    top: 0;
+    right: -300px; /* Start off-screen to the right */
+    width: 300px;
+    min-height: 580px;
+    max-height: 580px;
+    background-color: var(--primary-color); /* Dark background for the sidebar */
+    color: var(--secondary-color); /* Lighter text for contrast */
+    transition: right 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); /* Smooth slide effect */
+    z-index: 1100; /* Must be on top of the overlay */
+    padding: 23px 37px; /* More padding */
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.sidebar img{
+    align-self: center;
+    max-width: 120px;
+}
+
+/* Class to apply when the sidebar should be visible */
+.sidebarVisible {
+    right: 0; /* Slide into view */
+}
+
+/* Class to apply when the sidebar should be hidden */
+.sidebarHidden {
+    right: -300px; /* Keep it off-screen */
+}
+
+.sidebarText{
+    display: flex;
+    flex-direction: column;
+    gap:11px;
+}
+
+.sidebarText p{
+    margin: 0;
+}
+
+.sidebarText .title{
+    font-family: var(--font-family);
+    font-size: 24px;
+}
+
+.sidebarText .time{
+    font-family: var(--time-font);
+    font-size: 20px;
+}
+
+.linkButton{
+    border: none;
+    background-color: var(--tertiary-color);
+    color: var(--secondary-color);
+    font-family: var(--font-family);
+    font-size: 20px;
+    min-width: 150px;
+    align-self: center;
+    margin-top: auto;
+    border-radius: 5px;
+    padding: 7px 0;
+    transition: 0.2s;
+}
+
+.linkButton:hover{
+    box-shadow: 0 0 20px 1px rgba(225, 111, 0, 1);
+}
+
+/* A button to close the sidebar from within */
+.closeButton {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: none; /* Make background transparent */
+    border: none;
+    font-size: 2.5rem;
+    font-weight: 200;
+    line-height: 1;
+    color: var(--secondary-color); /* Softer close button color */
+    cursor: pointer;
+    padding: 5px; /* Make it easier to click */
+    border-radius: 50%; /* Circular button */
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.closeButton:hover {
+    transform: scale(1.2);
+}
+
+/* Styling for the content inside the sidebar */
+
+
+/* The overlay that dims the page content */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1050; /* Sits below the sidebar but above page content */
+    opacity: 0;
+    visibility: hidden; /* Hide it completely */
+    transition: opacity 0.4s ease-in-out, visibility 0.4s ease-in-out;
+}
+
+/* Class to apply when the overlay should be visible */
+.overlayVisible {
+    opacity: 1;
+    visibility: visible;
+}
+
+
+/* About Section */
+.about{
+    width: 100%;
+    display: flex;
+    padding: 100px 0;
+    align-items: center;
+    background-color: var(--secondary-color);
+}
+
+.about .text{
+    margin: 0 auto;
+    max-width: 742px;
+}
+
+.about h2{
+    font-family: var(--font-family);
+    font-size: 48px;
+    font-weight: 500;
+    margin: 0;
+    text-align: center;
+}
+
+.about h3{
+    font-family: var(--font-family);
+    font-size: 32px;
+    font-weight: 500;
+    margin: 0;
+    color: #9A9A9A;
+    text-align: center;
+}
+
+/* Trainers Section */
+
+.trainers{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 77px;
+    background-color: var(--primary-color);
+    align-items: center;
+    padding:  67px 0;
+}
+
+.trainers h2{
+    font-family: var(--font-family);
+    font-size: 64px;
+    font-weight: 500;
+    margin: 0;
+    color: var(--secondary-color);
+}
+
+.trainersGrid{
+    display: grid;
+    grid-template-columns: repeat(4, minmax(312px, 1fr)); 
+    grid-template-rows: 457px; /* Rows will adjust based on content */
+    gap: 60px; /* Space between trainer cards */
+}
+
+.trainer{
+    display: flex;
+    align-items: flex-end;
+}
+
+.information{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 24px 32px;
+    padding-top: 10px;
+    background-color: #000000CC;
+}
+
+.information h3{
+    font-family: var(--font-family);
+    font-size: 32px;
+    font-weight: 500;
+    margin: 0;
+    color: var(--secondary-color);
+}
+
+.information p{
+    font-family: var(--trainer-font);
+    font-size: 20px;
+    font-weight: 400;
+    margin: 0;
+    color: var(--secondary-color);
+}
+
+.trainers .linkButton{
+
+    min-width: 990px;
+    font-size: 40px;
+}
+
+.membership{
+    width: 100%;
+    display: flex;
+    min-height: 467px;
+}
+
+.membershipCard{
+    background-repeat: no-repeat;
+    background-size: cover;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 28px;
+    color: var(--secondary-color);
+}
+
+.membershipCard h3{
+    font-family: var(--font-family);
+    font-size: 32px;
+    font-weight: 500;
+    margin: 0;
+    text-align: center;
+}
+
+.membershipCard p{
+    font-family: var(--trainer-font);
+    font-size: 20px;
+    font-weight: 400;
+    max-width: 220px;
+    margin: 0;
+    text-align: center;
+}
+
+.membershipButton{
+    border: none;
+    background-color: var(--tertiary-color);
+    color: var(--secondary-color);
+    font-family: var(--font-family);
+    font-size: 20px;
+    min-width: 229px;
+    align-self: center;
+    border-radius: 10px;
+    padding: 7px 0;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.membershipButton:hover{
+    box-shadow: 0 0 20px 1px rgba(255, 111, 0, 1);
+}
+
+.membershipCardwhite{
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    gap: 28px;
+    color: black;
+}
+
+.membershipCardwhite h3{
+    font-family: var(--font-family);
+    font-size: 32px;
+    font-weight: 500;
+    margin: 0;
+    text-align: center;
+}
+
+.membershipCardwhite p{
+    font-family: var(--trainer-font);
+    font-size: 20px;
+    font-weight: 400;
+    max-width: 220px;
+    margin: 0;
+    text-align: center;
+}
+
+.scheduleTableWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 41px 0;
+  width: 100%;
+  box-sizing: border-box;
+  background-color: var(--primary-color);
+}
+
+.scheduleTitle {
+  font-size: 64px;
+  font-weight: 500;
+  letter-spacing: 12.8px;
+  padding: 0 30px;
+  padding-bottom: 18px;
+  border-bottom: 2px solid var(--tertiary-color);
+  margin-bottom: 26px;
+  margin-top: 0;
+  font-family: var(--font-family);
+  color: var(--secondary-color);
+  position: relative;
+  text-align: center;
+}
+
+.scheduleTitle::after {
+  content: '';
+  display: block;
+  width: 6rem;
+  height: 0.25rem;
+  background-color: var(--orange-500);
+  margin: 0.5rem auto 0 auto;
+  border-radius: 9999px;
+}
+
+.gymAccessText {
+    font-family: var(--font-family);
+    color: var(--secondary-color);
+    font-size: 32px;
+    font-weight: 500;
+    margin: 0;
+}
+
+.timeRangeText {
+    font-family: var(--font-family);
+    color: var(--secondary-color);
+    font-size: 32px;
+    font-weight: 500;
+    margin: 0;
+}
+
+.timeRangeText .highlight {
+  color: var(--orange-400);
+}
+
+.mainGridContainer {
+  width: 100%;
+  max-width: 80rem;
+  margin: 76px 0;
+  overflow: hidden;
+  overflow-x: auto;
+}
+
+.scheduleGrid {
+  display: grid;
+  /* CRITICAL FIX: Ensure 'auto' is FIRST for the time column and use fixed sizing for days */
+  grid-template-columns: auto repeat(6, 180px); /* Adjust 180px as needed for desired width */
+  grid-auto-rows: auto;
+  color: var(--secondary-color);
+  /* Calculate min-width based on fixed column sizes to ensure overflow-x */
+  min-width: calc(75px + 6 * 180px + (6 * 0px)); /* auto width + (6 days * 180px width) */
+  background-color: var(--primary-color);
+}
+
+
+.tableHeaderCell, .timeCell, .activityCell {
+  padding: 36px 20px;
+  text-align: center;
+  border-bottom: 1px solid #9A9A9A; /* Horizontal line between rows */
+  font-weight: 700;
+  box-sizing: border-box;
+}
+
+.tableHeaderCell {
+  background-color: var(--primary-color);
+  font-size: 32px;
+  font-family: var(--font-family);
+  font-weight: 500;
+  color: var(--tertiary-color);
+}
+
+/* The empty header cell for the time column on the left */
+.tableHeaderCell:first-child:empty {
+    /* No specific display rule needed here; it will naturally take 'auto' width */
+}
+
+/* This class is likely not needed anymore if the cell is consistently empty */
+/* .tableHeaderCell.hiddenSm { } */
+
+.timeCell {
+  background-color: var(--primary-color);
+  color: var(--tertiary-color);
+  font-family: var(--font-family);
+  font-size: 20px;
+  font-weight: 500;
+  /* CRITICAL FIX: Ensure time cell itself has no left border for overall table look */
+  /* Remove border-right if it was applied. Grid takes care of divisions. */
+}
+
+.activityCell {
+    font-family: var(--font-family);
+    font-size: 20px;
+    background-color: var(--primary-color);
+    font-weight: 500;
+    color: var(--secondary-color);
+    transition: color 0.2s ease-in-out;
+}
+
+.activityCell.hasContent {
+  cursor: pointer;
+}
+
+.activityCell.hasContent:hover {
+  color: var(--orange-400);
+}
+
+.activityCell.noContent {
+  background-color: var(--gray-700);
+}
+
+.gradientButton {
+    background-color: var(--tertiary-color);
+    color: var(--secondary-color);
+    font-family: var(--font-family);
+    font-size: 32px;
+    min-width: 851px;
+    align-self: center;
+    border-radius: 10px;
+    padding: 7px 0;
+    cursor: pointer;
+    transition: 0.2s;
+    border: none;
+    cursor: pointer;
+    outline: none;
+}
+.gradientButton:hover {
+  background-position: right center;
+  box-shadow: 0 0 20px 1px rgba(255, 111, 0, 1);
+
+}
+
+.workout{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: 593px;
+    background-color: var(--primary-color);
+}
+.workoutContainer{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+}
+
+.workoutContainer .content{
+    flex: 1 1 350px;
+    max-height: 367px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    transition: flex 0.5s ease-in-out, background-color 0.3s ease-in-out, box-shadow 0.3s ease; /* Smooth transitions */
+    overflow: hidden;
+}
+
+.workoutContainer .content h2{
+    font-family: var(--font-family);
+    font-size: 40px;
+    font-weight: 500;
+    color: var(--secondary-color);
+    margin: 0;
+}
+
+.workoutImage{
+    min-width: 267px;
+    max-width: 267px;
+}
+
+.content:hover {
+    flex: 0 0 650px; /* On hover, card expands to a fixed wider width (adjust as needed) */
+    background-color: var(--gray-700); /* Slightly lighter on hover */
+    box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+}
+
+.contentLeft {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; /* Centers image and title vertically */
+    gap: 10px;
+    flex-shrink: 0; /* Prevents this section from shrinking */
+    width: 267px; /* Fixed width for the image/title part of the card */
+    box-sizing: border-box;
+}
+
+.contentRight {
+    flex-grow: 1; /* Allows this section to take up available space when visible */
+    padding-left: 10px; /* Space between image/title and description */
+    opacity: 0;
+    max-width: 0; /* Initially hidden, controls horizontal expansion */
+    overflow: hidden; /* Hides content that exceeds max-width */
+    transition: opacity 0.3s ease-in-out 0.2s, max-width 0.5s ease-in-out 0.2s, padding-left 0.5s ease-in-out 0.2s; /* Add delay for smoother reveal */
+    white-space: normal; /* Allows text to wrap when visible */
+    box-sizing: border-box;
+}
+
+.content:hover .contentRight {
+    opacity: 1;
+    max-width: 300px; /* Set a specific max-width to reveal the description (adjust as needed) */
+    padding-left: 20px;
+}
+
+.contentRight p {
+    margin: 0;
+    font-size: 20px;
+    font-family: var(--font-family);
+    line-height: 1.5;
+    color: var(--secondary-color);
+
+}
+
+.about2{
+    background-color: var(--secondary-color);
+    font-family: var(--font-family);
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 98px;
+    align-items: center;
+    justify-content: center;
+    padding: 72px 0;
+}
+.about2 h2{
+    font-size: 64px;
+    font-weight: 500;
+    margin: 0;
+}
+.rowcontainer{
+    display: flex;
+    gap: 20px;
+}
+
+.contentContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 308px;
+    gap: 13px;
+    text-align: center;
+}
+
+.contentContainer img{
+    width: 100%;
+    height: auto;
+}
+
+.contentContainer .title{
+    font-size: 24px;
+    margin: 0;
+}
+
+.contentContainer .text{
+    font-size: 20px;
+    color: #9A9A9A;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.reviewcontainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    background-color: black;
+    gap: 120px;
+    padding: 80px 0;
+}
+
+.reviewcontainer h2{
+    display: flex;
+    font-size: 64px;
+    font-weight: 700;
+    color: var(--secondary-color);
+    align-self: center;
+}
+
+.review{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    background-color: var(--primary-color);
+    border-radius: 20px;
+    padding: 30px;
+    gap: 90px;
+    width: 1000px;
+}
+
+
+.reviewtext{
+    display: flex;
+    flex-direction: column;
+}
+
+.reviewtext .text{
+    font-size: 30px;
+    color: var(--secondary-color);
+}
+
+.reviewtext .title{
+    font-size: 26px;
+    margin-top: auto;
+    color: var(--secondary-color);
+    font-family: var(--font-family);
+}
+
+.reviewtext2{
+    display: flex;
+    flex-direction: column;
+    text-align: right;
+}
+
+.reviewtext2 .text{
+    font-size: 30px;
+    color: var(--secondary-color);
+}
+
+.reviewtext2 .title{
+    font-size: 26px;
+    margin-top: auto;
+    color: var(--secondary-color);
+    font-family: var(--font-family);
+}
+
+.mapContainer {
+  padding: 2rem;
+  background-color: #f9f9f9;
+  text-align: center;
+  margin-top: 4rem;
+}
+
+.footer{
+    display: flex;
+    flex-direction: row;
+}
+
+
+
+
+.loginButtonNav, .loginButtonHeader {
+    background-color: transparent;
+    border: 2px solid var(--tertiary-color);
+    color: var(--tertiary-color);
+    padding: 8px 15px;
+    border-radius: 6px;
+    font-family: var(--font-family);
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s, color 0.2s, transform 0.2s;
+    white-space: nowrap; /* Prevent text wrapping */
+    margin-left: 10px; /* Space from other nav items */
+}
+
+.loginButtonNav:hover, .loginButtonHeader:hover {
+    background-color: var(--tertiary-color);
+    color: var(--primary-bg-color);
+    transform: translateY(-2px);
+}
+
+
+.loginPopupOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7); /* Dark semi-transparent background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000; /* Ensure it's above everything */
+    backdrop-filter: blur(5px); /* Optional: blur background content */
+}
+
+.loginPopupContent {
+    background-color: black; /* Dark background for the popup */
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    position: relative;
+    width: 90%;
+    max-width: 450px;
+    text-align: center;
+    color: var(--secondary-color);
+    animation: fadeInScale 0.3s ease-out forwards; /* Simple animation */
+    display: flex; /* Use flexbox for internal layout */
+    flex-direction: column; /* Stack children vertically */
+    align-items: center; /* Center horizontally */
+}
+
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.loginCloseButton {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: none;
+    border: none;
+    font-size: 2.5rem;
+    line-height: 1;
+    color: var(--text-gray-400);
+    cursor: pointer;
+    transition: color 0.2s, transform 0.2s;
+}
+
+.loginCloseButton:hover {
+    color: var(--secondary-color);
+    transform: scale(1.1);
+}
+
+/* Form Titles */
+.loginPopupContent h2 {
+    font-family: var(--font-family);
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 30px;
+    color: var(--tertiary-color); /* Orange title for popup */
+    width: 100%; /* Ensure title takes full width */
+}
+
+.loginForm {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%; /* Ensure form takes full width of its container */
+}
+
+.formGroup {
+    text-align: left;
+    width: 100%; /* Ensure form group takes full width */
+}
+
+.formGroup label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-gray-300);
+}
+
+.loginInput {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid var(--gray-600);
+    border-radius: 5px;
+    background-color: var(--primary-bg-color);
+    color: var(--secondary-color);
+    font-family: var(--font-family);
+    font-size: 1rem;
+    box-sizing: border-box; /* Include padding in width */
+}
+
+.loginInput:focus {
+    border-color: var(--tertiary-color);
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(251, 146, 60, 0.5);
+}
+
+.loginSubmitButton {
+    background-image: linear-gradient(to right, #ff8a00 0%, #da1b60 100%);
+    transition: background-position 0.5s ease, transform 0.3s ease-in-out, box-shadow 0.3s ease;
+    background-size: 200% auto;
+    box-shadow: 0 4px 15px rgba(255, 140, 0, 0.4);
+    color: var(--secondary-color);
+    font-family: var(--font-family);
+    font-size: 1.2rem;
+    font-weight: 700;
+    padding: 12px 20px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.loginSubmitButton:hover {
+    background-position: right center;
+    box-shadow: 0 6px 20px rgba(255, 140, 0, 0.6);
+    transform: translateY(-3px);
+}
+
+/* Membership Radio Button Group */
+.membershipRadioGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 10px;
+    align-items: flex-start;
+}
+
+.membershipRadioLabel {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    font-size: 1rem;
+    color: var(--text-gray-300);
+}
+
+.membershipRadioInput {
+    margin-right: 10px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    border: 2px solid var(--gray-600);
+    border-radius: 50%;
+    outline: none;
+    transition: background-color 0.2s, border-color 0.2s;
+    position: relative;
+    flex-shrink: 0; /* Prevent it from shrinking */
+}
+
+.membershipRadioInput:checked {
+    background-color: var(--tertiary-color);
+    border-color: var(--tertiary-color);
+}
+
+.membershipRadioInput:checked::before {
+    content: '';
+    display: block;
+    width: 8px;
+    height: 8px;
+    background-color: var(--secondary-color);
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.membershipRadioInput:focus {
+    box-shadow: 0 0 0 3px rgba(251, 146, 60, 0.5);
+}
+
+
+/* NEW: Form Toggle Buttons */
+.formToggle {
+    display: flex;
+    width: 100%;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: var(--primary-bg-color); /* Background for the toggle buttons container */
+}
+
+.toggleButton {
+    flex: 1;
+    padding: 10px 0;
+    border: none;
+    background-color: transparent;
+    color: var(--text-gray-400);
+    font-family: var(--font-family);
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+    outline: none;
+    border-right: 1px solid var(--gray-700); /* Separator */
+}
+
+.toggleButton:last-child {
+    border-right: none; /* No separator for the last button */
+}
+
+.toggleButton:hover {
+    background-color: var(--gray-700);
+    color: var(--secondary-color);
+}
+
+.toggleButton.activeToggle {
+    background-color: var(--tertiary-color);
+    color: var(--primary-bg-color);
+    font-weight: 700;
+}
+
+.formSwitchText {
+    margin-top: 20px;
+    font-size: 0.95rem;
+    color: var(--text-gray-300);
+}
+
+.formSwitchLink {
+    color: var(--tertiary-color);
+    cursor: pointer;
+    font-weight: 600;
+    text-decoration: underline;
+    transition: color 0.2s;
+}
+
+.formSwitchLink:hover {
+    color: var(--orange-500);
+}
