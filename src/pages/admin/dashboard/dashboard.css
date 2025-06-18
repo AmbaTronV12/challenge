@@ -1,0 +1,43 @@
+.admin-dashboard {
+  flex-grow: 1;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  border: 1px solid rebeccapurple;
+}
+
+.admin-dashboard h2 {
+  margin: 0;
+}
+
+.admin-dashboard .card-wrapper {
+  display: grid;
+  width: 100%;
+  grid-template-columns: repeat(2, 1fr);
+  max-width: 1200px;
+  gap: 60px;
+}
+
+.admin-dashboard .card {
+  height: 200px;
+  display: flex;
+  align-items: center;
+}
+
+.admin-dashboard .card img {
+  background-color: black;
+  /* max-width: 50px;
+    max-height: 50px; */
+}
+
+.cardText {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  gap: 10px;
+  color: var(--secondary-color);
+}
