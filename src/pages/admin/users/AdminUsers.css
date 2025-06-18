@@ -21,3 +21,22 @@
     padding: 8px;
     border: 3px solid #BEBEBE;
 }
+
+.admin-users .action-btn{
+    padding: 10px 15px;
+    border-radius: 5px;
+    color: white;
+    font-weight: 600;
+    font-size: 17px;
+    border: none;
+    cursor: pointer;
+}
+
+.admin-users .edit{
+    margin-right: 15px;
+    background-color: #006CE8;
+}
+
+.admin-users .delete{
+    background-color: #FF3F33;
+}

@@ -79,6 +79,11 @@
   align-items: center;
 }
 
+.admin-main .wrapper {
+  padding: 32px 33px;
+  width: 100%;
+}
+
 /* LOGO */
 .admin-main .admin-logo {
   max-width: 101px;

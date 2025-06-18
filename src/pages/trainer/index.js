@@ -1,5 +1,5 @@
 import { useState } from "react";
-import ""
+import { logo2 } from "../../asset/index";
 import "../admin/admin.css";
 import TrainerDashboard from "./dashboard/TrainerDashboard.js";
 import TrainerUsers from "./users/TrainerUsers.js";
@@ -39,7 +39,7 @@ export default function Trainer() {
         <header>
           <img src={logo2} alt="logo" className="admin-logo" />
           <div className="side-logo">
-            <p>Admin</p>
+            <p>Trainer</p>
             <img src="/user 2.png" alt="side" />
           </div>
         </header>

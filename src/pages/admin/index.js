@@ -4,6 +4,8 @@ import AdminDashboard from "./dashboard/AdminDashboard.js";
 import AdminUsers from "./users/AdminUsers.js";
 import AdminTrainers from "./trainers/AdminTrainers.js";
 import AdminOrders from "./orders/AdminOrders.js";
+import UserTrainer from "./userTrainer/UserTrainer.js"
+import UserMembership from "./membership/UserMembership.js"
 import { logo2 } from "../../asset/index";
 
 export default function Admin() {
@@ -73,6 +75,36 @@ export default function Admin() {
           <h2>Orders</h2>
         </div>
 
+        <div
+          className={`sidebar-card ${activePage === "userTrainers" ? "active" : ""}`}
+          onClick={() => setActivePage("userTrainers")}
+        >
+          <img
+            src={
+              activePage === "userTrainers"
+                ? "/dashboard 1.png"      // aktif
+                : "/dashboard (1) 1.png"  // non-aktif
+            }
+            alt="userTrainers"
+          />
+          <h2>User Trainers</h2>
+        </div>
+
+        <div
+          className={`sidebar-card ${activePage === "userMemberships" ? "active" : ""}`}
+          onClick={() => setActivePage("userMemberships")}
+        >
+          <img
+            src={
+              activePage === "userMemberships"
+                ? "/dashboard 1.png"      // aktif
+                : "/dashboard (1) 1.png"  // non-aktif
+            }
+            alt="userMemberships"
+          />
+          <h2>User Memberships</h2>
+        </div>
+
       </div>
 
       <div className="admin-main">
@@ -83,12 +115,15 @@ export default function Admin() {
             <img src="/user 2.png" alt="side" />
           </div>
         </header>
-
+          <div className="wrapper">
         {/* Komponen halaman berdasarkan activePage */}
         {activePage === "dashboard" && <AdminDashboard />}
         {activePage === "users" && <AdminUsers />}
         {activePage === "trainers" && <AdminTrainers />}
         {activePage === "orders" && <AdminOrders />}
+        {activePage === "userTrainers" && <UserTrainer />}
+        {activePage === "userMemberships" && <UserMembership />}
+        </div>
       </div>
     </div>
   );

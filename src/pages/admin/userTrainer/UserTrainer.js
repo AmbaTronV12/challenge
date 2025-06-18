@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
-import "./AdminUsers.css";
+import "./UserTrainer.css";
 
-export default function AdminUsers() {
-  const [users, setUsers] = useState([]);
+export default function UserTrainer() {
+  const [userTrainers, setUserTrainers] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  const getUsers = async () => {
-    const res = await fetch("http://localhost:8000/api/users", {
+  const getTrainers = async () => {
+    const res = await fetch("http://localhost:8000/api/user-trainers", {
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
@@ -15,7 +15,7 @@ export default function AdminUsers() {
 
     const data = await res.json();
     if (res.ok) {
-      setUsers(data.users);
+      setUserTrainers(data.userTrainers);
     } else {
       console.log("Failed Getting");
     }
@@ -23,7 +23,7 @@ export default function AdminUsers() {
 
   const fetchData = async () => {
     setLoading(true);
-    await getUsers();
+    await getTrainers();
     setLoading(false);
   };
 
@@ -32,7 +32,7 @@ export default function AdminUsers() {
   }, []);
 
   return (
-    <div className="admin-users">
+    <div className="user-trainers">
       <div className="table-wrapper">
         <table style={{ borderCollapse: "collapse", width: "100%" }}>
           <thead>
@@ -49,25 +49,24 @@ export default function AdminUsers() {
               </th>
             </tr>
             <tr>
-              <th className="headerStyle">No</th>
               <th className="headerStyle">ID</th>
-              <th className="headerStyle">Username</th>
-              <th className="headerStyle">Role</th>
-              <th className="headerStyle">Action</th>
+              <th className="headerStyle">Customer ID</th>
+              <th className="headerStyle">Trainer ID</th>
+              <th className="headerStyle">Session ID</th>
+              <th className="headerStyle">Session Left</th>
+              <th className="headerStyle">Status</th>
             </tr>
           </thead>
           <tbody>
             {!loading ? (
-              users.map((user, index) => (
-                <tr key={user.id}>
-                  <td className="cellStyle">{index + 1}</td>
-                  <td className="cellStyle">{user.id}</td>
-                  <td className="cellStyle">{user.full_name}</td>
-                  <td className="cellStyle">{user.role}</td>
-                  <td className="cellStyle">
-                    <button className="action-btn edit">edit</button>
-                    <button className="action-btn delete">delete</button>
-                  </td>
+              userTrainers.map((userTrainer, index) => (
+                <tr key={userTrainer.id}>
+                  <td className="cellStyle">{userTrainer.id}</td>
+                  <td className="cellStyle">{userTrainer.customer_id}</td>
+                  <td className="cellStyle">{userTrainer.trainer_id}</td>
+                  <td className="cellStyle">{userTrainer.session_id}</td>
+                  <td className="cellStyle">{userTrainer.session_left}</td>
+                  <td className="cellStyle">{userTrainer.status}</td>
                 </tr>
               ))
             ) : (
