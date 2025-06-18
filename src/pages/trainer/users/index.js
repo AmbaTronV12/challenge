@@ -36,8 +36,6 @@ export default function TrainerUsers(){
                     </tbody>
                 </table>
             </div>
-                </div>
-
         </div>
     )
 }

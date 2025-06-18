@@ -236,9 +236,9 @@ function Home() {
         <div className={`${styles.stickyNavbar} ${showStickyNav && styles.visible}`}>
           <img src={logo} alt="Logo" className={styles.stickyLogo} />
           <a href="#" className={styles.navLink}>HOME</a>
-          <a href="#" className={styles.navLink}>SCHEDULE AND MEMBERSHIP</a>
-          <a href="#" className={styles.navLink}>ABOUT</a>
-          <a href='#' className={styles.navLink}>CONTACT US</a>
+          <a href="#schedule" className={styles.navLink}>SCHEDULE AND MEMBERSHIP</a>
+          <a href="#about" className={styles.navLink}>ABOUT</a>
+          <a href='#' onClick={toggleSidebar} className={styles.navLink}>CONTACT US</a>
       </div>
 
       <div className={`${styles.sidebar} ${isSidebarVisible ? styles.sidebarVisible : styles.sidebarHidden}`}>
@@ -272,15 +272,15 @@ function Home() {
             <div className={styles.navbar}>
                 <nav className={styles.navLinks}>
                     <a href="#" className={styles.navLink}>HOME</a>
-                    <a href="#" className={styles.navLink}>SCHEDULE AND MEMBERSHIP</a>
-                    <a href="#" className={styles.navLink}>ABOUT</a>
+                    <a href="#schedule" className={styles.navLink}>SCHEDULE AND MEMBERSHIP</a>
+                    <a href="#about" className={styles.navLink}>ABOUT</a>
                     <a href='#' className={styles.navLink} onClick={toggleSidebar}>CONTACT US</a>
                     <img src={sidebarLogo} onClick={toggleSidebar}/>
                 </nav>
             </div>
             
         </header>
-        <div className={styles.about}>
+        <div className={styles.about} id='about'>
           <img src={logo2} alt="Logo" className={styles.aboutLogo} />
           <div className={styles.text}>
             <h2>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h2>
@@ -347,7 +347,7 @@ function Home() {
             </div>
           </div>
 
-          <div className={styles.scheduleTableWrapper}>
+          <div className={styles.scheduleTableWrapper} id='schedule'>
                 <h2 className={styles.scheduleTitle}>
                     SCHEDULE
                     <span className={styles.scheduleTitleUnderline}></span>

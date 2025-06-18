@@ -1,17 +1,19 @@
 .admin-dashboard {
   flex-grow: 1;
   width: 100%;
-  padding: 0;
+  padding: 33px;
   margin: 0;
   box-sizing: border-box;
   display: flex;
   justify-content: center;
   flex-direction: column;
-  border: 1px solid rebeccapurple;
 }
 
 .admin-dashboard h2 {
   margin: 0;
+  font-family: var(--inter);
+  font-size: 30px;
+  font-weight: bolder;
 }
 
 .admin-dashboard .card-wrapper {
@@ -19,17 +21,19 @@
   width: 100%;
   grid-template-columns: repeat(2, 1fr);
   max-width: 1200px;
-  gap: 60px;
+  gap: 100px;
 }
 
 .admin-dashboard .card {
-  height: 200px;
   display: flex;
   align-items: center;
+  gap: 46px;
+  padding: 38px 45px;
+  border-radius: 20px;
 }
 
 .admin-dashboard .card img {
-  background-color: black;
+  margin-bottom: 25px;
   /* max-width: 50px;
     max-height: 50px; */
 }
@@ -37,7 +41,13 @@
 .cardText {
   display: flex;
   flex-direction: column;
+  font-size: 32px;
+  font-weight: bolder;
   margin: 0;
   gap: 10px;
   color: var(--secondary-color);
+}
+
+.cardText p{
+  margin: 0;
 }

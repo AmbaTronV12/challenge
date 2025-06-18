@@ -1,5 +1,6 @@
 import imageEmail from "../../../asset/email.svg";
 import "./dashboard.css";
+import { users, traineradmin, membercard, lifting } from "../../../asset";
 
 export default function AdminDashboard(){
     return(
@@ -7,35 +8,35 @@ export default function AdminDashboard(){
             <h2>Dashboard</h2>
             <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', width: '100%', height: '100%' }}>
                 <div className="card-wrapper">
-                    <div className="card" style={{  backgroundColor:'blue'}}>
-                        <img src={imageEmail} alt="imagecard"/>
+                    <div className="card" style={{  backgroundColor:'#006CE8'}}>
+                        <img src={users} alt="imagecard"/>
                         <div className="cardText">
-                            <h3>Users</h3>
-                            <h3>00</h3>
+                            <p>Users</p>
+                            <p>99</p>
                         </div>
                     </div>
 
-                    <div className="card">
-                        <img src={imageEmail} alt="imagecard"/>
+                    <div className="card" style={{  backgroundColor:'#FF3F33'}}>
+                        <img src={traineradmin} alt="imagecard" />
                         <div className="cardText">
-                            <h3>Users</h3>
-                            <h3>00</h3>
+                            <p>Trainer</p>
+                            <p>10</p>
                         </div>
                     </div>
 
-                    <div className="card">
-                        <img src={imageEmail} />
+                    <div className="card" style={{  backgroundColor:'#4DDACA'}}>
+                        <img src={membercard} />
                         <div className="cardText">
-                            <h3>Users</h3>
-                            <h3>00</h3>
+                            <p>Membership</p>
+                            <p>35</p>
                         </div>
                     </div>
 
-                    <div className="card">
-                        <img src={imageEmail} />
+                    <div className="card" style={{  backgroundColor:'#FF6F00'}}>
+                        <img src={lifting} />
                         <div className="cardText">
-                            <h3>Users</h3>
-                            <h3>00</h3>
+                            <p>Session Package</p>
+                            <p>3</p>
                         </div>
                     </div>
                 </div>
